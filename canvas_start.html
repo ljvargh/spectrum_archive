@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Drawing Area</title>
+<!-- You can add your style here rather than in an external style sheet. -->
+<style>
+	canvas {
+	    border:5px solid #d3d3d3;
+	    background-color: #f1f1f1;
+			display: block;
+	}
+
+</style>
+</head>
+<body>
+    <!-- DO NOT MODIFY THIS HTML -->
+    <canvas id = "myCanvas" width = "350" height = "500" ></canvas>
+    <input type = "color" id = "picker">
+
+		<script>
+			let canvas = document.querySelector("#myCanvas");
+			let pen = canvas.getContext("2d");
+			let x = 0;
+			let y = 0;
+
+			canvas.height = window.innerHeight*.8;
+			canvas.width = window.innerWidth*.8;
+
+			canvas.addEventListener("mousemove",draw);
+			window.addEventListener("keydown",keyCheck);
+			document.querySelector("#picker").addEventListener("click",colorPicker)
+
+			let color = ""
+			let shouldDraw = true;
+
+			function draw(e,shouldDraw){
+				x = e.clientX;
+				y = e.clientY;
+				if(shouldDraw == false){
+					pen.moveTo(x,y);
+					console.log(shouldDraw);
+				}
+				pen.beginPath();
+				pen.fillStyle = color;
+				pen.arc(x,y,10,0,2*Math.PI);
+				pen.fill();
+
+
+			}
+
+			function keyCheck(k){
+				let input = k.which;
+				console.log(input);
+				if(input==82){
+					color = "#FF0000";
+				}
+				if(input==66){
+					color = "#0000FF";
+				}
+				if(input==71){
+					color = "#00FF00";
+				}
+				if (input==89) {
+					color = "#FFFF00";
+				}
+				if(input==32){
+					pen.clearRect(0,0,canvas.width,canvas.height);
+				}
+				if(input==38){
+					shouldDraw = false;
+				}
+				if(input==40){
+					shouldDraw = true;
+				}
+				console.log(shouldDraw);
+			}
+
+				function colorPicker(){
+					color = document.querySelector("#picker").value;
+				}
+
+		</script>
+
+</body>
+</html>
