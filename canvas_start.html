@@ -42,6 +42,7 @@
 				if(shouldDraw == false){
 					pen.moveTo(x,y);
 				}
+				pen.fillStyle = color;
 				pen.beginPath();
 				pen.arc(x,y,10,0,2*Math.PI);
 				pen.fill();
@@ -74,7 +75,7 @@
 				console.log(shouldDraw);
 			}
 
-				function colorPicker(e){
+				function colorPicker(){
 					color = document.querySelector("#picker").value;
 					console.log(color);
 					return color;
