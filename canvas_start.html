@@ -35,18 +35,16 @@
 			let color = ""
 			let shouldDraw = true;
 
-			function draw(e,shouldDraw){
-				x = e.clientX;
-				y = e.clientY;
+			function draw(e){
+				x = e.offsetX;
+				y = e.offsetY;
+				console.log(shouldDraw);
 				if(shouldDraw == false){
-					return;
+					pen.moveTo(x,y);
 				}
 				pen.beginPath();
-				pen.fillStyle = color;
 				pen.arc(x,y,10,0,2*Math.PI);
 				pen.fill();
-
-
 			}
 
 			function keyCheck(k){
@@ -76,8 +74,10 @@
 				console.log(shouldDraw);
 			}
 
-				function colorPicker(){
+				function colorPicker(e){
 					color = document.querySelector("#picker").value;
+					console.log(color);
+					return color;
 				}
 
 		</script>
