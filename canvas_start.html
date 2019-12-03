@@ -30,7 +30,7 @@
 
 			canvas.addEventListener("mousemove",draw);
 			window.addEventListener("keydown",keyCheck);
-			document.querySelector("#picker").addEventListener("click",colorPicker)
+			document.querySelector("#picker").addEventListener("input",colorPicker)
 
 			let color = ""
 			let shouldDraw = true;
@@ -39,13 +39,13 @@
 				x = e.offsetX;
 				y = e.offsetY;
 				console.log(shouldDraw);
-				if(shouldDraw == false){
-					pen.moveTo(x,y);
-				}
+				pen.moveTo(x,y);
 				pen.fillStyle = color;
+				if(shouldDraw == true){
 				pen.beginPath();
 				pen.arc(x,y,10,0,2*Math.PI);
 				pen.fill();
+			}
 			}
 
 			function keyCheck(k){
