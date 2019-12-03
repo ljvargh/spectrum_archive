@@ -39,8 +39,7 @@
 				x = e.clientX;
 				y = e.clientY;
 				if(shouldDraw == false){
-					pen.moveTo(x,y);
-					console.log(shouldDraw);
+					return;
 				}
 				pen.beginPath();
 				pen.fillStyle = color;
